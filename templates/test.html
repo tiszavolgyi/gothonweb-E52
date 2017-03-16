@@ -1,0 +1,15 @@
+$def with (copy)
+
+<html>
+<head>
+  <title>This is the test page</title>
+</head>
+
+<body>
+  $if copy:
+    The test copy is: <em style="color:blue; font-size: 3em">$copy</em>
+  $else:
+    No copy.
+
+</body>
+</html>
