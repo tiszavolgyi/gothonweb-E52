@@ -3,9 +3,9 @@ from gothonweb.map import *
 
 def test_room():
     gold = Room("GoldRoom",
-                """This room has gold in it you can grab. There's a
-                door to the north.""")
+                """This room has gold in it you can grab. There's a door to the north.""")
     assert_equal(gold.name, "GoldRoom")
+    assert_equal(gold.description, """This room has gold in it you can grab. There's a door to the north.""")
     assert_equal(gold.paths, {})
 
 def test_room_paths():
@@ -34,6 +34,12 @@ def test_map():
 def test_gothon_game_map():
     assert_equal(START.go('shoot'), generic_death)
     assert_equal(START.go('dodge'), generic_death)
+    assert_equal(START.go('tell a joke'), laser_weapon_armory)
 
     room = START.go('tell a joke')
     assert_equal(room, laser_weapon_armory)
+
+def test_death_description():
+    death_description = "Test death"
+    generic_death = Room("death", death_description)
+    assert_equal(generic_death.description, "Test death")
