@@ -43,3 +43,8 @@ def test_death_description():
     death_description = "Test death"
     generic_death = Room("death", death_description)
     assert_equal(generic_death.description, "Test death")
+
+def test_answer():
+    center = Room("Center", "Test room in the center.")
+    center.generate_response({'shout': 'Bad decision, you die'})
+    assert_equal(center.answer('shout'), "Bad decision, you die")
